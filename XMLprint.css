@@ -1,0 +1,110 @@
+@namespace url(http://schemas.gpo.gov/xml/uslm);
+@namespace dc url(http://purl.org/dc/elements/1.1/);
+
+@page {
+    size: A5 portrait;
+    margin-top:	.5in;
+	margin-bottom:	.5in;
+	margin-left:	.35in;
+	margin-right:	10pt;
+	padding:	12pt; 
+	font-size:	8pt;
+	hyphens:	 manual;
+    font-family: 	'Times New Roman',Times,serif;
+
+    @top-right {
+        content: string(chapterTitle);
+        border-bottom: 1px solid #000;
+        margin-top: 8pt;
+        width: 35%;
+    }
+
+    @top-left {
+        content: string(numTitle) string(editorialTitle) string(headingTitle);
+        border-bottom: 1px solid #000;
+        margin-top: 8pt;
+        width: 35%;
+    }
+
+    @top-center {
+        content: '';
+        border-bottom: 1px solid #000;
+        margin-top: 8pt;
+        width: 30%;
+    }
+}
+
+@page :first {
+    padding-top: 40%;
+}
+
+body {
+    counter-reset: sectionTitle;
+    font-size:	8pt;
+    width: auto !important;
+}
+#title-page {
+    text-align: center;
+    page-break-after: always;
+    break-after: right;
+}
+#toc {
+    page-break-after: right;
+    list-style-type: none;
+}
+#toc li {
+    margin-bottom: 10pt;
+}
+dc|title {
+    string-set: chapterTitle content();
+}
+section > num {
+    string-set: numTitle content();
+}
+num + editorialNote {
+    string-set: editorialTitle content();
+}
+editorialNote + heading {
+    string-set: headingTitle content();
+}
+table.uscdispo3col {
+    width: 100%;
+}
+div.analysis{
+    width: 100%;
+}
+div.analysis-head-left{
+    float: left;
+    font-size: .80em;
+}
+div.analysis > div {
+    display: flex;
+    justify-content: space-between;
+}
+div.two-column-analysis-style-content-left{
+    overflow: visible;
+    float: left;
+}
+div.two-column-analysis-style-content-right{
+    float: right;
+    text-align: left;
+    text-indent: -1em;
+    padding-left: 1em;
+    margin-left: 0em;
+}
+div.three-column-analysis-style-content-left{
+    float: left;
+    width: 5%;
+    font-weight: bold;
+}
+div.three-column-analysis-style-content-center{
+    float: left;
+    width: 85%;
+    font-weight: bold;
+}
+div.three-column-analysis-style-content-right{
+    float: right;
+    width: 10%;
+    text-align: right;
+    font-weight: bold;
+}
